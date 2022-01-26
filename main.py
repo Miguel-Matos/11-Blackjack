@@ -1,3 +1,4 @@
+from os import remove
 import art
 import random
 
@@ -62,11 +63,21 @@ print(f" Your hand: {user_cards} \n Computer hand: {computer_cards[0]}")
 
 def calculate_score(player_hand):
     score = sum(player_hand)
-    return score
+    lets_count = 0
+    for i in player_hand:
+        if player_hand[lets_count] == 11:
+            if score > 21:
+                player_hand.remove(11)
+                player_hand.append(1)
+                score = sum(player_hand)
+        lets_count += 1
+
+    if score == 21:
+        return 0
+    else:
+        return score
 
 print(calculate_score(user_cards))
-
-#Hint 7: Inside calculate_score() check for a blackjack (a hand with only 2 cards: ace + 10) and return 0 instead of the actual score. 0 will represent a blackjack in our game.
 
 #Hint 8: Inside calculate_score() check for an 11 (ace). If the score is already over 21, remove the 11 and replace it with a 1. You might need to look up append() and remove().
 
