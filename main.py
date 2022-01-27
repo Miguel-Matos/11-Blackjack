@@ -27,7 +27,7 @@ def game():
             more_cards = input("Do you want another card? Y or N: ").lower()
             if more_cards == "y":
                 user_cards.append(deal_card())
-                print(f" Your hand: {user_cards} \n Computer hand: {computer_cards[0]}")
+                print(f" Your hand: {user_cards} \n Computer hand: [{computer_cards[0]}]")
             else: #lets computer draw cards as long as they are under 17 and then breaks the loop  
                 more_than_seventeen = False
                 while more_than_seventeen == False:
